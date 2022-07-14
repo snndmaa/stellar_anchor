@@ -6,3 +6,4 @@ stellar-base-sseclient==0.0.21
 stellar-sdk==8.1.0
 toml==0.10.2
 gunicorn==20.1.0
+django-cors-headers==3.11.0
