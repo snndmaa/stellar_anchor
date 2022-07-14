@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'stellar_anchor',
     'polaris',
-    'elink'
+    # 'elink'
 ]
 
 MIDDLEWARE = [
