@@ -1,0 +1,6 @@
+django-polaris==2.3.1
+djangorestframework==3.12.4
+whitenoise==5.3.0
+stellar-base-sseclient==0.0.21
+stellar-sdk==8.1.0
+toml==0.10.2
