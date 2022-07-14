@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    "django.middleware.common.CommonMiddleware",
     'polaris.middleware.TimezoneMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'polaris.middleware.PolarisSameSiteMiddleware'
