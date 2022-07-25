@@ -27,6 +27,16 @@ class ElinkUser(models.Model):
         return f"{self.name} ({self.id})"
 
 
+class ElinkUserKYC(models.Model):
+    user = models.ForeignKey(ElinkUser, on_delete=models.CASCADE)
+    address_1 = models.CharField(max_length=254)
+    address_2 = models.CharField(max_length=254)
+    country = models.CharField(max_length=30)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    zip_code = models.CharField(max_length=15)
+
+
 class ElinkStellarAccount(models.Model):
     user = models.OneToOneField(ElinkUser, on_delete=models.CASCADE, default=None)     #Change to one to one field
     memo = models.TextField(null=True, blank=True)
