@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from numpy import True_
 from .models import ElinkStellarAccount, ElinkUser, ElinkUserKYC, ElinkPayment
 
 # Create your views here.
