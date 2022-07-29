@@ -79,6 +79,22 @@ class ElinkUserTransaction(models.Model):
         return f"{str(self.account)}: {str(self.transaction)}"
 
 
+class ElinkPayment(models.Model):
+    """
+    To track the completion of Withdraw Transactions.
+    Works hand in hand with the Polaris Transaction Model.
+    """
+
+    choices = (
+        ('DELIVERED', 'DELIVERED'),
+        ('INITIALIZED', 'INITIALIZED'),
+        ('FAILED', 'FAILED')
+    )
+
+    transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=choices, default='INITIALIZED')
+
+
 class OffChainAssetExtra(models.Model):
     """
     Extra information on off-chain assets that Elink' model doesn't store
