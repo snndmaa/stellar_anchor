@@ -1,3 +1,4 @@
+import decimal
 from django.shortcuts import render
 from .models import ElinkStellarAccount, ElinkUser, ElinkUserKYC, ElinkPayment
 
@@ -33,7 +34,7 @@ def update_user_kyc(form, user):
 def calculate_fee(transaction):
     # not in use presently
     
-    fee = (transaction.amount_in) * (10/100)
+    fee = (transaction.amount_in) * decimal.Decimal(10/100)
 
     return fee
 
