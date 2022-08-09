@@ -48,6 +48,7 @@ class AnchorRails(RailsIntegration):
                 transaction.amount_in - decimal.Decimal(transaction.amount_fee),
                 transaction.asset.significant_decimals
             )
+            # Transaction.status = "completed"
             transaction.save()
         payment = submit_payment(transaction)   #create then return to reference below
         if payment.status == 'DELIVERED':
