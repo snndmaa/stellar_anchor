@@ -11,9 +11,14 @@ def get_new_token():
 
 
 class ElinkUser(models.Model):
+    """
+    User/Customer account from the Elink Platform
+    """
+    
     first_name = models.CharField(max_length=254)
     last_name = models.CharField(max_length=254)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
+    wallet_id = models.CharField(max_length=50, unique=True, blank=True)
     bank_account_number = models.CharField(max_length=254, null=True)
     bank_number = models.CharField(max_length=254, null=True)
 
@@ -27,7 +32,19 @@ class ElinkUser(models.Model):
         return f"{self.name} ({self.id})"
 
 
+class ElinkPaymentProvider(models.Model):
+    """
+    
+    """
+    
+    provider_name = models.CharField(max_length=50)
+
+
 class ElinkUserKYC(models.Model):
+    """
+    To store additional information connected to a user.
+    """
+
     user = models.ForeignKey(ElinkUser, on_delete=models.CASCADE)
     address_1 = models.CharField(max_length=254)
     address_2 = models.CharField(max_length=254)
@@ -36,8 +53,27 @@ class ElinkUserKYC(models.Model):
     state = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=15)
 
+    bvn = models.CharField(max_length=11)
+    payment_account = models.CharField(max_length=10)
+    payment_provider = models.ForeignKey(ElinkPaymentProvider, on_delete=models.CASCADE)
+
+
+class ElinkCustodyAccount(models.Model):
+    """
+    
+    """
+
+    user = models.ForeignKey(ElinkUser, on_delete=models.CASCADE)
+    payment_provider = models.ForeignKey(ElinkPaymentProvider, on_delete=models.CASCADE)
+    account_number = models.CharField(max_length=10)
+    active = models.BooleanField(default=True)
+
 
 class ElinkStellarAccount(models.Model):
+    """
+    Customer Account relation with Stellar
+    """
+
     user = models.OneToOneField(ElinkUser, on_delete=models.CASCADE, default=None)     #Change to one to one field
     memo = models.TextField(null=True, blank=True)
     memo_type = models.TextField(null=True, blank=True)
@@ -94,6 +130,16 @@ class ElinkPayment(models.Model):
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=choices, default='INITIALIZED')
 
+
+class ElinkFundingAccount(models.Model):
+    """
+    
+    """
+
+    user = models.ForeignKey(ElinkUser, on_delete=models.CASCADE)
+    payment_provider = models.ForeignKey(ElinkPaymentProvider, on_delete=models.CASCADE)
+    account_number = models.CharField(max_length=10)
+    active = models.BooleanField(default=True)
 
 class OffChainAssetExtra(models.Model):
     """

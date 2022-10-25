@@ -6,7 +6,7 @@ print(dir(Mono))
 os.environ['MONO-SEC-KEY'] = "test_sk_7U2TH2kPxGwwrmpB6Hik"
 
 #Code gotten from Mono Connect Vanilla JS app
-mono = Mono('code_7QpcDVeNa2FGommPJvAU')
+mono = Mono('code_iBNdxM9EJmmEyEgTiCgD')
 
 #Authenticate user and save user object and http status code
 (data, status) = mono.Auth()
