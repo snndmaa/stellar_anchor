@@ -18,7 +18,7 @@ class ElinkUser(models.Model):
     first_name = models.CharField(max_length=254)
     last_name = models.CharField(max_length=254)
     email = models.EmailField(unique=True)
-    wallet_id = models.CharField(max_length=50, blank=True, null=True)
+    wallet_id = models.CharField(max_length=50, blank=True)
     bank_account_number = models.CharField(max_length=254, null=True)
     bank_number = models.CharField(max_length=254, null=True)
 
