@@ -13,6 +13,9 @@ router.register('usertransaction', views.UserTransactionView, basename='usertran
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('assets', views.StellarAssetView.as_view(), name='assets'),
     path('accounts', views.AccountView.as_view(), name='accounts'),
-    path('account/<int:pk>', views.AccountView, name='account')
+    path('account/<int:pk>', views.AccountView, name='account'),
+    path('monouser', views.UserMonoTransactionView.as_view(), name='monouser'),
+    path('balance/<int:pk>/', views.userbalancedetail, name='user_balance')
 ]
