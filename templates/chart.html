@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Financial Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="financialChart"></canvas>
+
+  <script>
+// Financial data (sample data)
+const financialData = [
+  { date: '2022-01-01', price: 100 },
+  { date: '2022-02-01', price: 120 },
+  { date: '2022-03-01', price: 90 },
+  // Add more data points...
+];
+
+// Extract dates and prices from financial data
+const dates = financialData.map(data => data.date);
+const prices = financialData.map(data => data.price);
+
+// Create the chart
+const ctx = document.getElementById('financialChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: dates,
+    datasets: [{
+      label: 'Price',
+      data: prices,
+      borderColor: 'rgba(75, 192, 192, 1)', // Customize line color
+      backgroundColor: 'rgba(75, 192, 192, 0.2)', // Customize fill color
+      tension: 0.4, // Adjust line curve (0 = straight, 1 = curved)
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Date'
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Price'
+        }
+      }
+    }
+  }
+});
+
+  </script>
+</body>
+</html>

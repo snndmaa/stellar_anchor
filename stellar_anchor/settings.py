@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'stellar_anchor',
     'polaris',
-    'elink'
+    'elink',
 ]
 
 MIDDLEWARE = [
@@ -108,13 +108,23 @@ WSGI_APPLICATION = 'stellar_anchor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'wallet_base',
+    'USER': 'sandman',
+    'PASSWORD': 'sobriety',
+    'HOST': 'wallet-base-2.ceynanps8tbw.us-east-1.rds.amazonaws.com',
+    'PORT': '5432',
+  }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -163,6 +173,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-django_heroku.settings(locals())
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# CSRF_TRUSTED_ORIGINS = ['localhost']
+
+# django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    # 'EXCEPTION_HANDLER': 'elink.api.custom_exception_handler.custom_exception_handler'
+}
+
+AUTH_USER_MODEL = 'elink.ElinkUser'
