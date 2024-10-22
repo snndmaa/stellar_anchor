@@ -3,9 +3,8 @@ from polaris.models import Asset
 
 asset_code = input('Enter Asset Code: ')
 asset_symbol = input('Enter Asset Symbol: ')
-asset_issuer = 'GCUNL4X72TO6D62UB6ABMJBFNWIJFTAJM6N3IGUNW6AFITTYQ4JWKPX6'
-asset_issuer_seed = 'SBHI3TDD7P73HD3ITPBFAMRA4H6QH5CIE4VCGSAPNRPTZFXGWKNAXFX2'
-asset_distributor_seed = 'SDOIHVVSLUDPKUYGTI2SFYIBLGWWFVFJYOHJC4Q6E4TNALDQU2F6BO4U'
+asset_issuer = 'GA2RUSQQYQTZJRXRUJRR6OFJ3Q3O7XUU27ZOFYIBHUK3D656RW6WQT5C'
+asset_distributor_seed = 'SAJ266DP3MJTOAFLWCJ7BONGX4MASUMDOUWBNVR3TQ7F3SYGQUY3IRAT'
 
 Asset.objects.create(
     code=asset_code,
